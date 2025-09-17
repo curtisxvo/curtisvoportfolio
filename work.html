@@ -3,35 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Curtis Vo Portfolio</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <title>Curtis Vo Portfolio - Work</title>
+  <link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
-  <!-- Header with Social Links -->
-  <header class="social-links-top">
-    <a href="https://www.linkedin.com/in/curtisvoutd/" target="_blank">
-      <img src="assets/linkedin.png" alt="LinkedIn" class="social-icon" />
-    </a>
-    <a href="https://github.com/curtisxvo" target="_blank">
-      <img src="assets/github.png" alt="GitHub" class="social-icon" />
-    </a>
-    <a href="mailto:vo.curtis20@gmail.com" title="Send email to Curtis">
-      <img src="assets/email.png" alt="Email" class="social-icon" />
-    </a>
-  </header>
+  <!-- Include Header Component -->
+  <div id="header-container"></div>
 
-  <!-- Navbar with Logo -->
-  <nav class="navbar">
-    <img src="assets/Dark Logo.svg" alt="CVO Logo" class="main-logo" />
-    <ul class="nav-links">
-      <li><a href="index.html">About</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="Resume - Project Manager.pdf" download="Curtis Vo's Resume">Resume</a></li>
-    </ul>
-  </nav>
+  <!-- Include Navbar Component -->
+  <div id="navbar-container"></div>
   
- <!-- Work Section -->
- <section id="work" class="section">
+  <!-- Work Section -->
+  <section id="work" class="section work-page">
     <h2>Work</h2>
     <div class="work-grid">
       <div class="work-item">
@@ -48,3 +31,18 @@
       </div>
     </div>
   </section>
+
+  <!-- Include Footer Component -->
+  <div id="footer-container"></div>
+
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+  <script src="js/components.js"></script>
+  <script>
+    // Load components
+    loadComponent('header-container', 'components/header.html');
+    loadComponent('navbar-container', 'components/navbar.html');
+    loadComponent('footer-container', 'components/footer.html');
+  </script>
+</body>
+</html>

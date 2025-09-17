@@ -1,0 +1,48 @@
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+/* Tablet and smaller screens */
+@media (max-width: 768px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .nav-links {
+    gap: 3rem;
+  }
+  
+  .nav-links li a {
+    font-size: 1rem;
+  }
+  
+  .social-links-top {
+    top: 0.5rem;
+    right: 1rem;
+    gap: 1rem;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 480px) {
+  .nav-links {
+    gap: 2rem;
+  }
+  
+  .nav-links li a {
+    font-size: 0.9rem;
+  }
+  
+  .main-logo {
+    height: 180px;
+  }
+  
+  .section {
+    padding: 3rem 1rem;
+  }
+  
+  .work-grid {
+    padding: 0 1rem;
+  }
+}

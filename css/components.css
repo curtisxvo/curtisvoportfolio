@@ -1,26 +1,11 @@
-/* Global */
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: #0d1117;
-  color: #e5e7eb;
-  text-align: center;
-  line-height: 1.6;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-}
+/* ==========================================================================
+   COMPONENT STYLES
+   ========================================================================== */
 
-/* Main Logo */
-.main-logo {
-  height: 250 px;
-  display: block;
-  margin: 0 auto 1.5rem auto;
-  text-align: center;
-}
+/* ==========================================================================
+   SOCIAL LINKS COMPONENT
+   ========================================================================== */
 
-/* Social Links Top Right */
 .social-links-top {
   position: fixed;
   top: 1rem;
@@ -43,13 +28,12 @@ body {
 }
 
 .social-links-top a:hover {
-  transform: scale(1.1);
   opacity: 0.8;
 }
 
 .social-icon {
-  width: 32px;
-  height: 32px;
+  width: 16px;
+  height: 16px;
   filter: brightness(0) invert(1);
   transition: filter 0.3s;
   object-fit: contain;
@@ -59,16 +43,26 @@ body {
   filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(200deg);
 }
 
-/* Navbar */
+/* ==========================================================================
+   NAVIGATION COMPONENT
+   ========================================================================== */
+
 .navbar {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 2rem 0 3rem 0;
-  margin-top: 2rem;
+  margin-top: 4rem;
   width: 100%;
   background-color: #161B22;
+  text-align: center;
+}
+
+.main-logo {
+  height: 225px;
+  display: block;
+  margin: 0 auto 1.5rem auto;
   text-align: center;
 }
 
@@ -96,34 +90,15 @@ body {
   color: #E5E7EB;
 }
 
-/* Sections */
-.section {
-  padding: 5rem 2rem;
-  max-width: 800px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+.nav-links li a.active {
+  color: #3b82f6;
+  font-weight: 700;
 }
 
-.section h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
+/* ==========================================================================
+   WORK GRID COMPONENT
+   ========================================================================== */
 
-/* About */
-.profile-pic {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  margin: 2rem 0;
-  object-fit: cover;
-  object-position: center;
-  border: 3px solid #3b82f6;
-}
-
-/* Work */
 .work-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -155,33 +130,10 @@ body {
   border: 2px solid #4b5563;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .work-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .nav-links {
-    gap: 3rem;
-  }
-  
-  .nav-links li a {
-    font-size: 1rem;
-  }
-}
+/* ==========================================================================
+   FOOTER COMPONENT
+   ========================================================================== */
 
-@media (max-width: 480px) {
-  .nav-links {
-    gap: 2rem;
-  }
-  
-  .nav-links li a {
-    font-size: 0.9rem;
-  }
-}
-
-/* Footer */
 footer {
   padding: 2rem;
   border-top: 1px solid #1f2937;
