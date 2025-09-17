@@ -5,10 +5,44 @@
 // DOM Content Loaded Event
 document.addEventListener('DOMContentLoaded', function() {
   // Initialize all modules
+  initializePageTransitions();
   initializeNavigation();
   initializeSocialLinks();
   initializeWorkItems();
 });
+
+/* ==========================================================================
+   PAGE TRANSITION FUNCTIONS
+   ========================================================================== */
+
+function initializePageTransitions() {
+  // Handle navigation clicks
+  const navLinks = document.querySelectorAll('.nav-links a[href$=".html"]');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetUrl = this.getAttribute('href');
+      transitionToPage(targetUrl);
+    });
+  });
+}
+
+function transitionToPage(url) {
+  const mainContent = document.querySelector('.main-content');
+  
+  // Fade out main content
+  if (mainContent) {
+    mainContent.classList.add('fade-out');
+    
+    // Wait for fade out, then navigate
+    setTimeout(() => {
+      window.location.href = url;
+    }, 400);
+  } else {
+    // Fallback if main-content not found
+    window.location.href = url;
+  }
+}
 
 /* ==========================================================================
    NAVIGATION FUNCTIONS

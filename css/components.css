@@ -47,6 +47,11 @@
    NAVIGATION COMPONENT
    ========================================================================== */
 
+#navbar-container {
+  width: 100%;
+  display: block;
+}
+
 .navbar {
   display: flex;
   flex-direction: column;
@@ -138,4 +143,24 @@ footer {
   padding: 2rem;
   border-top: 1px solid #1f2937;
   color: #9ca3af;
+}
+
+/* ==========================================================================
+   PAGE TRANSITION COMPONENT
+   ========================================================================== */
+
+/* Main content area that fades */
+.main-content {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.main-content.fade-out {
+  opacity: 0;
+}
+
+/* Keep navbar always visible */
+.navbar {
+  position: relative;
+  z-index: 10;
 }
