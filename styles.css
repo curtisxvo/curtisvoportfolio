@@ -8,13 +8,41 @@ body {
   line-height: 1.6;
 }
 
+/* Logo Section */
+.logo-section {
+  text-align: center;
+  padding: 2rem 0 1rem 0;
+}
+
+.main-logo {
+  height: 60px;
+}
+
+/* Social Links Top Right */
+.social-links-top {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  display: flex;
+  gap: 1rem;
+  z-index: 100;
+}
+
+.social-links-top a {
+  text-decoration: none;
+  color: #e5e7eb;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.social-links-top a:hover {
+  color: #3b82f6;
+}
+
 /* Navbar */
 .navbar {
-  position: sticky;
-  top: 0;
-  background: #0d1117;
-  padding: 1rem 0;
-  z-index: 100;
+  text-align: center;
+  padding: 1rem 0 2rem 0;
 }
 
 .nav-links {
@@ -36,10 +64,6 @@ body {
 
 .nav-links li a:hover {
   color: #3b82f6;
-}
-
-.logo img {
-  height: 40px;
 }
 
 /* Sections */
@@ -86,19 +110,4 @@ footer {
   padding: 2rem;
   border-top: 1px solid #1f2937;
   color: #9ca3af;
-}
-
-.socials {
-  margin-bottom: 1rem;
-}
-
-.socials a {
-  margin: 0 0.5rem;
-  text-decoration: none;
-  color: #e5e7eb;
-  transition: color 0.3s;
-}
-
-.socials a:hover {
-  color: #3b82f6;
 }
