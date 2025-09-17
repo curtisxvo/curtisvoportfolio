@@ -75,6 +75,11 @@ class Navigation {
     });
   }
 
+  // Method to update active state after navigation
+  updateActiveState() {
+    this.setActivePage();
+  }
+
   addMobileMenuToggle() {
     // Add mobile menu functionality if needed
     // This can be expanded for responsive navigation

@@ -16,6 +16,12 @@ document.addEventListener('DOMContentLoaded', function() {
    ========================================================================== */
 
 function initializePageTransitions() {
+  // Create loading indicator if it doesn't exist
+  createLoadingIndicator();
+  
+  // Add loading state to body on page load
+  document.body.classList.add('page-loading');
+  
   // Handle navigation clicks
   const navLinks = document.querySelectorAll('.nav-links a[href$=".html"]');
   navLinks.forEach(link => {
@@ -25,19 +31,53 @@ function initializePageTransitions() {
       transitionToPage(targetUrl);
     });
   });
+  
+  // Initialize page entry animation
+  initializePageEntry();
+}
+
+function createLoadingIndicator() {
+  if (!document.querySelector('.loading-indicator')) {
+    const loadingIndicator = document.createElement('div');
+    loadingIndicator.className = 'loading-indicator';
+    document.body.appendChild(loadingIndicator);
+  }
+}
+
+function initializePageEntry() {
+  const mainContent = document.querySelector('.main-content');
+  
+  if (mainContent) {
+    // Remove loading state and trigger entry animation
+    setTimeout(() => {
+      document.body.classList.remove('page-loading');
+      mainContent.classList.add('page-enter');
+      
+      // Clean up animation class after animation completes
+      setTimeout(() => {
+        mainContent.classList.remove('page-enter');
+      }, 600);
+    }, 100);
+  }
 }
 
 function transitionToPage(url) {
   const mainContent = document.querySelector('.main-content');
+  const loadingIndicator = document.querySelector('.loading-indicator');
   
-  // Fade out main content
+  // Fade out main content with upward movement
   if (mainContent) {
     mainContent.classList.add('fade-out');
+    
+    // Show loading indicator
+    if (loadingIndicator) {
+      loadingIndicator.classList.add('active');
+    }
     
     // Wait for fade out, then navigate
     setTimeout(() => {
       window.location.href = url;
-    }, 400);
+    }, 500);
   } else {
     // Fallback if main-content not found
     window.location.href = url;
@@ -53,6 +93,35 @@ function initializeNavigation() {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   const navLinks = document.querySelectorAll('.nav-links a');
   
+  // Remove active class from all links first
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  // Add active class to current page
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+      link.classList.add('active');
+    }
+  });
+  
+  // Update active state after component loading
+  setTimeout(() => {
+    updateActiveNavigation();
+  }, 100);
+}
+
+function updateActiveNavigation() {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.nav-links a');
+  
+  // Remove active class from all links
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  // Add active class to current page
   navLinks.forEach(link => {
     const href = link.getAttribute('href');
     if (href === currentPage || (currentPage === '' && href === 'index.html')) {

@@ -96,7 +96,7 @@
 }
 
 .nav-links li a.active {
-  color: #3b82f6;
+  color: #E5E7EB;
   font-weight: 700;
 }
 
@@ -152,15 +152,73 @@ footer {
 /* Main content area that fades */
 .main-content {
   opacity: 1;
-  transition: opacity 0.4s ease-in-out;
+  transform: translateY(0);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  min-height: 100vh;
 }
 
 .main-content.fade-out {
   opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* Page loading state */
+.page-loading .main-content {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Smooth page entry animation */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-content.page-enter {
+  animation: pageEnter 0.6s ease-out forwards;
 }
 
 /* Keep navbar always visible */
 .navbar {
   position: relative;
   z-index: 10;
+}
+
+/* Prevent layout shift during transitions */
+body {
+  overflow-x: hidden;
+}
+
+/* Loading indicator */
+.loading-indicator {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 3px solid #374151;
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.loading-indicator.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
