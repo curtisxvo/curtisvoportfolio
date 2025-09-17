@@ -149,12 +149,18 @@ footer {
    PAGE TRANSITION COMPONENT
    ========================================================================== */
 
-/* Main content area that fades */
+/* Main content area that fades - starts hidden */
 .main-content {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  min-height: calc(100vh - 200px); /* Account for navbar height */
+}
+
+/* Content loaded state */
+.main-content.loaded {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-  min-height: 100vh;
 }
 
 .main-content.fade-out {
@@ -162,32 +168,22 @@ footer {
   transform: translateY(-20px);
 }
 
-/* Page loading state */
-.page-loading .main-content {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-/* Smooth page entry animation */
-@keyframes pageEnter {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.main-content.page-enter {
-  animation: pageEnter 0.6s ease-out forwards;
-}
-
-/* Keep navbar always visible */
+/* Keep navbar always visible and stable */
 .navbar {
   position: relative;
   z-index: 10;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Header always visible */
+#header-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Prevent layout shift during transitions */

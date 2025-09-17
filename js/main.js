@@ -19,9 +19,6 @@ function initializePageTransitions() {
   // Create loading indicator if it doesn't exist
   createLoadingIndicator();
   
-  // Add loading state to body on page load
-  document.body.classList.add('page-loading');
-  
   // Handle navigation clicks
   const navLinks = document.querySelectorAll('.nav-links a[href$=".html"]');
   navLinks.forEach(link => {
@@ -48,16 +45,10 @@ function initializePageEntry() {
   const mainContent = document.querySelector('.main-content');
   
   if (mainContent) {
-    // Remove loading state and trigger entry animation
+    // Wait for components to load, then animate content in
     setTimeout(() => {
-      document.body.classList.remove('page-loading');
-      mainContent.classList.add('page-enter');
-      
-      // Clean up animation class after animation completes
-      setTimeout(() => {
-        mainContent.classList.remove('page-enter');
-      }, 600);
-    }, 100);
+      mainContent.classList.add('loaded');
+    }, 200);
   }
 }
 
@@ -67,6 +58,7 @@ function transitionToPage(url) {
   
   // Fade out main content with upward movement
   if (mainContent) {
+    mainContent.classList.remove('loaded');
     mainContent.classList.add('fade-out');
     
     // Show loading indicator
